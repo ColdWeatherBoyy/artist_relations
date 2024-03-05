@@ -5,14 +5,14 @@ import requests
 app = Flask(__name__)
 
 
-@app.route("/")
+@app.get("/")
 def homepage():
     return render_template("index.html")
 
 
-@app.post("/related-artist/")
+@app.get("/artist")
 def related_artist() -> str:
-    artist = request.form["artist"]
+    artist = request.args["artist"]
     related_artists = find_related_artists(artist)
     return render_template("index.html", related_artists=related_artists)
 

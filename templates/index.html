@@ -18,6 +18,8 @@
 			<li>Spotify: {{ artist }}</li>
 			{% endfor %} {% for artist in related_artists["deezer"] %}
 			<li>Deezer: {{ artist }}</li>
+			{% endfor %} {% for artist in related_artists["lastfm"] %}
+			<li>Last.fm: {{ artist }}</li>
 			{% endfor %}
 		</ul>
 		{% endif %}

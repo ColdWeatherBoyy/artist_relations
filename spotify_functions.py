@@ -45,7 +45,6 @@ def get_artist_spotify(artist: str) -> Optional[List[str]]:
     if related_artists.status_code != 200:
         print("Error")
     else:
-
         return list(
             map(lambda artist: artist["name"], related_artists.json()["artists"])
         )

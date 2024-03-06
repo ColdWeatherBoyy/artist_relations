@@ -2,6 +2,7 @@ from flask import render_template, request
 from deezer_functions import get_artists_deezer
 from lastfm_functions import get_artists_lastfm
 from spotify_functions import get_artist_spotify
+from tidal_functions import get_artists_tidal
 
 
 def homepage():
@@ -15,4 +16,5 @@ def get_related_artists() -> str:
         "spotify": get_artist_spotify(artist),
         "lastfm": get_artists_lastfm(artist),
     }
+    get_artists_tidal(artist)
     return render_template("index.html", related_artists=related_artists)

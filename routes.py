@@ -1,6 +1,6 @@
 from flask import render_template, request
 from deezer_functions import get_artists_deezer
-from spotify_functions import get_artist_spotify, get_token
+from spotify_functions import get_artist_spotify
 
 
 def homepage():

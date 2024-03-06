@@ -1,21 +1,20 @@
 import base64
 from typing import List, Optional
 import requests
+from constants import SPOTIFY_CLIENT_ID, SPOTIFY_CLIENT_SECRET
 
 
 def get_token() -> Optional[str]:
-    client_id = "89a5571cb46a4d6e96bfe8597134ebb4"
-    client_secret = "1b9ed2ab263142f7911df663ec83de45"
     url = "https://accounts.spotify.com/api/token"
-    credentials_b64 = base64.b64encode(f"{client_id}:{client_secret}".encode()).decode(
-        "utf-8"
-    )
+    b64_credentials = base64.b64encode(
+        f"{SPOTIFY_CLIENT_ID}:{SPOTIFY_CLIENT_SECRET}".encode()
+    ).decode("utf-8")
     body = {
         "grant_type": "client_credentials",
     }
     headers = {
         "Content-Type": "application/x-www-form-urlencoded",
-        "Authorization": f"Basic {credentials_b64}",
+        "Authorization": f"Basic {b64_credentials}",
     }
     response = requests.post(url, data=body, headers=headers)
     if response.status_code != 200:

@@ -20,6 +20,8 @@
 			<li>Deezer: {{ artist }}</li>
 			{% endfor %} {% for artist in related_artists["lastfm"] %}
 			<li>Last.fm: {{ artist }}</li>
+			{% endfor %} {% for artist in related_artists["tidal"] %}
+			<li>Tidal: {{ artist }}</li>
 			{% endfor %}
 		</ul>
 		{% endif %}

@@ -15,6 +15,6 @@ def get_related_artists() -> str:
         "deezer": get_artists_deezer(artist),
         "spotify": get_artist_spotify(artist),
         "lastfm": get_artists_lastfm(artist),
+        "tidal": get_artists_tidal(artist),
     }
-    get_artists_tidal(artist)
     return render_template("index.html", related_artists=related_artists)

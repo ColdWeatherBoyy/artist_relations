@@ -14,8 +14,10 @@
 		</form>
 		{% if related_artists %}
 		<ul>
-			{% for artist in related_artists %}
-			<li>{{ artist }}</li>
+			{% for artist in related_artists["spotify"] %}
+			<li>Spotify: {{ artist }}</li>
+			{% endfor %} {% for artist in related_artists["deezer"] %}
+			<li>Deezer: {{ artist }}</li>
 			{% endfor %}
 		</ul>
 		{% endif %}

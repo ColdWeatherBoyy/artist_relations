@@ -1,8 +1,8 @@
 from flask import render_template, request
-from deezer_functions import get_artists_deezer
-from lastfm_functions import get_artists_lastfm
-from spotify_functions import get_artist_spotify
-from tidal_functions import get_artists_tidal
+from helper_functions.deezer_functions import get_artists_deezer
+from helper_functions.lastfm_functions import get_artists_lastfm
+from helper_functions.spotify_functions import get_artist_spotify
+from helper_functions.tidal_functions import get_artists_tidal
 
 
 def homepage():

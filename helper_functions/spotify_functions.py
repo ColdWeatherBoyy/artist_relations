@@ -18,7 +18,7 @@ def get_token() -> Optional[str]:
     }
     response = requests.post(url, data=body, headers=headers)
     if response.status_code != 200:
-        print("Error")
+        print("Error retrieving token from Spotify")
     else:
         return response.json()["access_token"]
 
@@ -28,7 +28,7 @@ def get_artist_id_spotify(artist: str, token: str) -> Optional[str]:
     headers = {"Authorization": f"Bearer {token}"}
     response = requests.get(url, headers=headers)
     if response.status_code != 200:
-        print("Error")
+        print("Error retrieving artist id from Spotify")
     else:
         return response.json()["artists"]["items"][0]["id"]
 
@@ -43,7 +43,7 @@ def get_artist_spotify(artist: str) -> Optional[List[str]]:
     headers = {"Authorization": f"Bearer {token}"}
     related_artists = requests.get(url, headers=headers)
     if related_artists.status_code != 200:
-        print("Error")
+        print("Error retrieving related artists from Spotify")
     else:
         return list(
             map(lambda artist: artist["name"], related_artists.json()["artists"])

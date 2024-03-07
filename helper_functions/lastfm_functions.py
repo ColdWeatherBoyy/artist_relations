@@ -7,7 +7,7 @@ def get_artists_lastfm(artist: str) -> Optional[List[str]]:
     url = f"http://ws.audioscrobbler.com/2.0/?method=artist.getsimilar&artist={artist}&api_key={LASTFM_API_KEY}&format=json"
     related_artists = requests.get(url)
     if related_artists.status_code != 200:
-        print("Error")
+        print("Error retrieving related artists from Last.fm")
     else:
         return list(
             map(

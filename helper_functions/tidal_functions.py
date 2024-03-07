@@ -2,7 +2,6 @@ import base64
 from typing import List, Optional
 import requests
 from constants import TIDAL_CLIENT_ID, TIDAL_CLIENT_SECRET
-import json
 
 
 def get_token() -> Optional[str]:
@@ -66,14 +65,6 @@ def get_artist_names_tidal(artist_ids: List[str], token: str) -> Optional[List[s
     if response.status_code != 207:
         print("Error retrieving related artists' names from Tidal")
     else:
-        print(
-            list(
-                map(
-                    lambda artist: artist["resource"]["name"],
-                    response.json()["data"],
-                )
-            )
-        )
         return list(
             map(
                 lambda artist: artist["resource"]["name"],

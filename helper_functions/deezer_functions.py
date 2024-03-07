@@ -14,4 +14,4 @@ def get_artists_deezer(artist: str) -> Optional[List[str]]:
                 map(lambda artist: artist["name"], related_artists.json()["data"])
             )
     else:
-        print("Error")
+        print("Error retrieving related artists from Deezer")

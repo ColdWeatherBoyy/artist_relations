@@ -12,7 +12,7 @@
 			<input type="text" name="artist" placeholder="Enter an artist" />
 			<button type="submit">Search</button>
 		</form>
-		{% if related_artists %}
+		<!-- {% if related_artists %}
 		<ul>
 			{% for artist in related_artists["spotify"] %}
 			<li>Spotify: {{ artist }}</li>
@@ -22,6 +22,13 @@
 			<li>Last.fm: {{ artist }}</li>
 			{% endfor %} {% for artist in related_artists["tidal"] %}
 			<li>Tidal: {{ artist }}</li>
+			{% endfor %}
+		</ul>
+		{% endif %} -->
+		{% if related_artists_ranked %}
+		<ul>
+			{% for artist in related_artists_ranked %}
+			<li>{{artist}}: {{related_artists_ranked[artist]}}/4</li>
 			{% endfor %}
 		</ul>
 		{% endif %}

@@ -12,9 +12,9 @@
 			<input type="text" name="artist" placeholder="Enter an artist" />
 			<button type="submit">Search</button>
 		</form>
-		{% if sorted_related_artists and platform_count %}
+		{% if related_artists and platform_count %}
 		<ul>
-			{% for artist, rank in sorted_related_artists.items() %}
+			{% for artist, rank in related_artists.items() %}
 			<li>{{artist}}: {{rank}}/{{platform_count}}</li>
 			{% endfor %}
 		</ul>

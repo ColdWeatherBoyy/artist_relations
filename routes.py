@@ -1,9 +1,8 @@
 from flask import json, render_template, request
 from helper_functions.deezer_functions import get_artists_deezer
 from helper_functions.general_helper_functions import (
-    compare_artists,
+    compare_and_sort_artists,
     evaluate_platform,
-    sort_artists_by_rank,
 )
 from helper_functions.lastfm_functions import get_artists_lastfm
 from helper_functions.spotify_functions import get_artist_spotify
@@ -24,14 +23,11 @@ def get_related_artists() -> str:
     evaluate_platform(artist, get_artists_deezer, "Deezer", related_artists)
     evaluate_platform(artist, get_artists_tidal, "Tidal", related_artists)
 
-    # compare the related artists from each platform and return the results
-    related_artists_ranked, platform_count = compare_artists(related_artists)
-
-    # sort the related artists by how many playforms that are found in
-    sorted_related_artists = sort_artists_by_rank(related_artists_ranked)
+    # compare and sortthe related artists from each platform and return the results
+    related_artists, platform_count = compare_and_sort_artists(related_artists)
 
     return render_template(
         "index.html",
-        sorted_related_artists=sorted_related_artists,
+        related_artists=related_artists,
         platform_count=platform_count,
     )

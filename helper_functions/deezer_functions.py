@@ -3,7 +3,7 @@ import requests
 
 
 def get_artists_deezer(artist: str) -> Optional[List[str]]:
-    json = requests.get(f"https://api.deezer.com/search/artist?q={artist}")
+    json = requests.get(f"https://api.deezer.com/search/artist?q={artist}&limit=20")
     if json.status_code == 200:
         artist_id = json.json()["data"][0]["id"]
         related_artists = requests.get(

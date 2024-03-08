@@ -37,7 +37,7 @@ def get_artist_id_tidal(artist: str, token: str) -> Optional[str]:
 
 def get_related_artists_ids_tidal(artist_id: str, token: str) -> Optional[List[str]]:
     url = (
-        f"https://openapi.tidal.com/artists/{artist_id}/similar?countryCode=US&limit=15"
+        f"https://openapi.tidal.com/artists/{artist_id}/similar?countryCode=US&limit=20"
     )
     headers = {
         "Authorization ": f"Bearer {token}",

@@ -18,7 +18,6 @@ def compare_and_sort_artists(data: Dict[str, List[str]]) -> Tuple[Dict[str, int]
     for platform in data:
         if data[platform]:
             platform_count += 1
-    for platform in data:
         for artist in data[platform]:
             if artist not in artists_ranked:
                 artists_ranked[artist] = 1

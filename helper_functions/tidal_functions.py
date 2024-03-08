@@ -30,7 +30,7 @@ def get_artist_id_tidal(artist: str, token: str) -> Optional[str]:
     }
     response = requests.get(url, headers=headers)
     if response.status_code != 207:
-        print("Error retriveing artist id from Tidal")
+        print("Error retrieving artist id from Tidal")
     else:
         return response.json()["artists"][0]["id"]
 
@@ -84,7 +84,7 @@ def get_artists_tidal(artist: str) -> Optional[List[str]]:
         return
     related_artists_ids = get_related_artists_ids_tidal(artist_id, token)
     if related_artists_ids is None:
-        print("No related artists ids")
+        print("No related artists ids from Tidal")
         return
     related_artists_names = get_artist_names_tidal(related_artists_ids, token)
     return related_artists_names

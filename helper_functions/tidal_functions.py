@@ -76,11 +76,11 @@ def get_artist_names_tidal(artist_ids: List[str], token: str) -> Optional[List[s
 def get_artists_tidal(artist: str) -> Optional[List[str]]:
     token = get_token()
     if token is None:
-        print("No token")
+        print("No token Tidal")
         return
     artist_id = get_artist_id_tidal(artist, token)
     if artist_id is None:
-        print("No artist id")
+        print("No artist id Tidal")
         return
     related_artists_ids = get_related_artists_ids_tidal(artist_id, token)
     if related_artists_ids is None:

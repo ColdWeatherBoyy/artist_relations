@@ -36,7 +36,7 @@ def get_artist_id_spotify(artist: str, token: str) -> Optional[str]:
 def get_artist_spotify(artist: str) -> Optional[List[str]]:
     token = get_token()
     if token is None:
-        print("No token")
+        print("No token Spotify")
         return
     artist_id = get_artist_id_spotify(artist, token)
     url = f"https://api.spotify.com/v1/artists/{artist_id}/related-artists"

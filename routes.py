@@ -1,6 +1,10 @@
 from flask import json, render_template, request
 from helper_functions.deezer_functions import get_artists_deezer
-from helper_functions.general_helper_functions import compare_artists
+from helper_functions.general_helper_functions import (
+    compare_artists,
+    evaluate_platform,
+    sort_artists_by_rank,
+)
 from helper_functions.lastfm_functions import get_artists_lastfm
 from helper_functions.spotify_functions import get_artist_spotify
 from helper_functions.tidal_functions import get_artists_tidal
@@ -13,21 +17,21 @@ def homepage():
 def get_related_artists() -> str:
     artist = request.args["artist"]
     related_artists = {}
-    deezer_artists = get_artists_deezer(artist)
-    if deezer_artists:
-        related_artists["deezer"] = deezer_artists
-    spotify_artists = get_artist_spotify(artist)
-    if spotify_artists:
-        related_artists["spotify"] = spotify_artists
-    tidal_artists = get_artists_tidal(artist)
-    if tidal_artists:
-        related_artists["tidal"] = tidal_artists
-    lastfm_artists = get_artists_lastfm(artist)
-    if lastfm_artists:
-        related_artists["lastfm"] = lastfm_artists
+
+    # evaluate each platform and add the related artists to the related_artists dictionary
+    evaluate_platform(artist, get_artist_spotify, "Spotify", related_artists)
+    evaluate_platform(artist, get_artists_lastfm, "Last.fm", related_artists)
+    evaluate_platform(artist, get_artists_deezer, "Deezer", related_artists)
+    evaluate_platform(artist, get_artists_tidal, "Tidal", related_artists)
+
+    # compare the related artists from each platform and return the results
     related_artists_ranked, platform_count = compare_artists(related_artists)
+
+    # sort the related artists by how many playforms that are found in
+    sorted_related_artists = sort_artists_by_rank(related_artists_ranked)
+
     return render_template(
         "index.html",
-        related_artists_ranked=related_artists_ranked,
+        sorted_related_artists=sorted_related_artists,
         platform_count=platform_count,
     )

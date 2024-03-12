@@ -8,24 +8,34 @@
 		<link rel="stylesheet" href="{{ url_for('static', filename='animate.css' )}}" />
 	</head>
 	<body>
-		<h1>Find Related Artists</h1>
-		<form id="artist-search-form" method="get" action="/artist">
-			<label for="artist">Enter an artist to find suggested artists</label>
-			<input
-				id="artist-search-input"
-				type="text"
-				name="artist"
-				placeholder="Enter an artist"
-			/>
-			<button id="artist-search-button" type="submit">Search</button>
-		</form>
-		{% if related_artists and platform_count %}
-		<ul>
-			{% for artist, rank in related_artists.items() %}
-			<li>{{artist}}: {{rank}}/{{platform_count}}</li>
-			{% endfor %}
-		</ul>
-		{% endif %}
-		<script src="{{ url_for('static', filename='script.js' )}}"></script>
+		<div class="wrapper">
+			<div id="page-header">Find Related Artists</div>
+			<form class="form" id="artist-search-form" method="get" action="/artist">
+				<label class="form-label" for="artist"
+					>Enter an artist to find suggested artists</label
+				>
+				<input
+					id="artist-search-input"
+					class="form-input"
+					type="text"
+					name="artist"
+					placeholder="Enter an artist"
+				/>
+				<button class="form-button" id="artist-search-button" type="submit">
+					Search
+				</button>
+			</form>
+			{% if related_artists and platform_count %}
+			<div id="results-header">Results from {{platform_count}} platforms...</div>
+			<div class="list-container">
+				{% for artist, rank in related_artists.items() %}
+				<div class="list-item platform-{{ platform_count }}-{{ rank }}">
+					{{artist}}: {{rank}}/{{platform_count}}
+				</div>
+				{% endfor %}
+			</div>
+			{% endif %}
+			<script src="{{ url_for('static', filename='script.js' )}}"></script>
+		</div>
 	</body>
 </html>

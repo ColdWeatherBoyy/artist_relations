@@ -1,22 +1,31 @@
+html {
+	height: 100%;
+}
+
 body {
 	font-family: Arial, sans-serif;
 	background-color: #f8f8f8;
 	margin: 0;
 	padding: 0;
+	height: 100%;
 }
 
-.container {
-	max-width: 600px;
-	margin: 0 auto;
-	padding: 20px;
+.wrapper {
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	box-sizing: border-box;
 }
 
-h1 {
+#page-header {
+	font-size: 50px;
 	text-align: center;
 	color: #333;
 }
 
-form {
+.form {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -25,12 +34,12 @@ form {
 	margin-top: 20px;
 }
 
-label {
+.form-label {
 	font-size: 18px;
 	color: #555;
 }
 
-input[type="text"] {
+.form-input {
 	width: 300px;
 	padding: 10px;
 	border: 1px solid #ccc;
@@ -38,7 +47,7 @@ input[type="text"] {
 	margin-top: 10px;
 }
 
-button[type="submit"] {
+.form-button {
 	padding: 10px 20px;
 	background-color: #007bff;
 	color: #fff;
@@ -50,22 +59,69 @@ button[type="submit"] {
 	box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 }
 
-button[type="submit"]:hover {
+.form-button:hover {
 	background-color: #0056b3;
 }
 
-ul {
-	list-style: none;
-	padding: 0;
+#results-header {
+	font-size: 30px;
+	text-align: center;
+	color: #333;
+	margin-top: 20px;
 }
 
-li {
-	margin-top: 10px;
+.list-container {
+	margin-top: 20px;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	flex-wrap: wrap;
+}
+
+.list-item {
+	margin: 10px;
+	padding: 10px;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+}
+
+.platform-4-4,
+.platform-3-3,
+.platform-2-2,
+.platform-1-1 {
+	opacity: 1;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+}
+
+.platform-4-3 {
+	opacity: 0.75;
+	box-shadow: 0 0 7.5px rgba(0, 0, 0, 0.6);
+}
+
+.platform-3-2 {
+	opacity: 0.67;
+	box-shadow: 0 0 6.7px rgba(0, 0, 0, 0.53);
+}
+
+.platform-4-2,
+.platform-2-1 {
+	opacity: 0.5;
+	box-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
+}
+
+.platform-3-1 {
+	opacity: 0.33;
+	box-shadow: 0 0 3.3px rgba(0, 0, 0, 0.25);
+}
+
+.platform-4-1 {
+	opacity: 0.25;
+	box-shadow: 0 0 2.5px rgba(0, 0, 0, 0.2);
 }
 
 /* Media Query for smaller screens */
 @media screen and (max-width: 768px) {
-	input[type="text"] {
+	.form-input {
 		width: 100%;
 	}
 }

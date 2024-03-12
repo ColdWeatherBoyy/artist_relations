@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, request
 from routes import homepage, get_related_artists
 from dotenv import load_dotenv
 

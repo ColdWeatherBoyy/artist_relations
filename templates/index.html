@@ -4,13 +4,19 @@
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Related Artists</title>
+		<link rel="stylesheet" href="{{ url_for('static', filename='style.css' )}}"" />
 	</head>
 	<body>
 		<h1>Find Related Artists</h1>
-		<form method="get" action="/artist">
+		<form id="artist-search-form" method="get" action="/artist">
 			<label for="artist">Enter an artist to find suggested artists</label>
-			<input type="text" name="artist" placeholder="Enter an artist" />
-			<button type="submit">Search</button>
+			<input
+				id="artist-search-input"
+				type="text"
+				name="artist"
+				placeholder="Enter an artist"
+			/>
+			<button id="artist-search-button" type="submit">Search</button>
 		</form>
 		{% if related_artists and platform_count %}
 		<ul>
@@ -19,5 +25,6 @@
 			{% endfor %}
 		</ul>
 		{% endif %}
+		<script src="{{ url_for('static', filename='script.js' )}}"></script>
 	</body>
 </html>

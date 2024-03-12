@@ -42,11 +42,12 @@ button[type="submit"] {
 	padding: 10px 20px;
 	background-color: #007bff;
 	color: #fff;
-	border: none;
+	border: 1px solid #0d1d97;
 	border-radius: 5px;
-	cursor: pointer;
 	margin-top: 10px;
+	cursor: pointer;
 	transition: background-color 0.3s ease;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 }
 
 button[type="submit"]:hover {

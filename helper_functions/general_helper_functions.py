@@ -1,4 +1,5 @@
 from typing import Callable, Dict, List, Tuple
+from collections import defaultdict
 
 
 def evaluate_platform(
@@ -13,16 +14,13 @@ def evaluate_platform(
 
 
 def compare_and_sort_artists(data: Dict[str, List[str]]) -> Tuple[Dict[str, int], int]:
-    artists_ranked = {}
+    artists_ranked = defaultdict(lambda: 0)
     platform_count = 0
     for platform in data:
         if data[platform]:
             platform_count += 1
         for artist in data[platform]:
-            if artist not in artists_ranked:
-                artists_ranked[artist] = 1
-            else:
-                artists_ranked[artist] += 1
+            artists_ranked[artist] += 1
     artists_sorted = dict(
         sorted(artists_ranked.items(), key=lambda x: x[1], reverse=True)
     )

@@ -1,6 +1,6 @@
 from typing import List, Optional
 import requests
-from constants import LASTFM_API_KEY
+from ..constants import LASTFM_API_KEY
 
 
 def get_artists_lastfm(artist: str) -> Optional[List[str]]:

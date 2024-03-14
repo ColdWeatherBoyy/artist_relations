@@ -37,7 +37,7 @@ def get_related_artists() -> str:
     related_artists, platforms = compare_and_sort_artists(related_artists)
 
     # Find which spelling of artist name is most common
-    most_used_artist_name = max(artist_name_dict.keys())
+    most_used_artist_name = max(artist_name_dict, key=lambda x: artist_name_dict[x])
 
     return render_template(
         "index.html",

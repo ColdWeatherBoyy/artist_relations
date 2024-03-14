@@ -1,7 +1,7 @@
 import base64
 from typing import List, Optional
 import requests
-from ..constants import SPOTIFY_CLIENT_ID, SPOTIFY_CLIENT_SECRET
+from constants import SPOTIFY_CLIENT_ID, SPOTIFY_CLIENT_SECRET
 
 
 def get_token() -> Optional[str]:

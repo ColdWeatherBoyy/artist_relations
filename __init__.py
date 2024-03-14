@@ -1,5 +1,5 @@
-from flask import Flask, render_template, request
-from .routes import homepage, get_related_artists
+from flask import Flask
+from routes import homepage, get_related_artists
 from dotenv import load_dotenv
 import os
 

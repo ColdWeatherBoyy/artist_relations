@@ -24,10 +24,10 @@ def get_related_artists() -> str:
     evaluate_platform(artist, get_artists_tidal, "Tidal", related_artists)
 
     # compare and sortthe related artists from each platform and return the results
-    related_artists, platform_count = compare_and_sort_artists(related_artists)
+    related_artists, platforms = compare_and_sort_artists(related_artists)
 
     return render_template(
         "index.html",
         related_artists=related_artists,
-        platform_count=platform_count,
+        platforms=platforms,
     )

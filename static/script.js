@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", function () {
 		formButton.disabled = true;
 		formButton.style.cursor = "wait";
 		formButton.style.backgroundColor = "white";
-		formButton.style.color = "#007bff";
+		formButton.style.color = "#7266db";
 		formButton.classList.add("continuous-pulse");
 		inputField.style.pointerEvents = "none";
 		inputField.blur();

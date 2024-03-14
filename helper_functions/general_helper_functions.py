@@ -13,15 +13,17 @@ def evaluate_platform(
         related_artists[platform_name] = artists
 
 
-def compare_and_sort_artists(data: Dict[str, List[str]]) -> Tuple[Dict[str, int], int]:
+def compare_and_sort_artists(
+    data: Dict[str, List[str]]
+) -> Tuple[Dict[str, int], List[str]]:
     artists_ranked = defaultdict(lambda: 0)
-    platform_count = 0
+    platforms = []
     for platform in data:
         if data[platform]:
-            platform_count += 1
+            platforms.append(platform)
         for artist in data[platform]:
             artists_ranked[artist] += 1
     artists_sorted = dict(
         sorted(artists_ranked.items(), key=lambda x: x[1], reverse=True)
     )
-    return (artists_sorted, platform_count)
+    return (artists_sorted, platforms)

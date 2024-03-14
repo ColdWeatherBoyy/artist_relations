@@ -10,8 +10,19 @@ body {
 	height: 100%;
 }
 
+.header {
+	background-color: #c8c8c8;
+	padding: 10px 10px;
+}
+
+.header-text {
+	font-size: 40px;
+	margin: 10px;
+}
+
 .wrapper {
 	height: 100%;
+	margin-top: -60px;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -19,8 +30,8 @@ body {
 	box-sizing: border-box;
 }
 
-#page-header {
-	font-size: 50px;
+.center-header {
+	font-size: 35px;
 	text-align: center;
 	color: #333;
 }
@@ -35,8 +46,9 @@ body {
 }
 
 .form-label {
-	font-size: 18px;
+	font-size: 16px;
 	color: #555;
+	width: 50%;
 }
 
 .form-input {
@@ -49,9 +61,9 @@ body {
 
 .form-button {
 	padding: 10px 20px;
-	background-color: #007bff;
+	background-color: #7266db;
 	color: #fff;
-	border: 1px solid #0d1d97;
+	border: 1px solid #35317a;
 	border-radius: 5px;
 	margin-top: 10px;
 	cursor: pointer;
@@ -60,14 +72,22 @@ body {
 }
 
 .form-button:hover {
-	background-color: #0056b3;
+	background-color: #5245c9;
 }
 
-#results-header {
-	font-size: 30px;
+.results-header {
+	font-size: 25px;
 	text-align: center;
 	color: #333;
 	margin-top: 20px;
+}
+
+.results-description {
+	font-size: 14px;
+	text-align: center;
+	color: #555;
+	margin-top: 10px;
+	width: 50%;
 }
 
 .list-container {

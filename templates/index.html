@@ -33,12 +33,12 @@
 					Search
 				</button>
 			</form>
-			{% if related_artists and platforms %}
+			{% if related_artists and platforms and artist %}
 			<div class="results-header">Results from {{ platforms|length }} platforms...</div>
 			<div class="results-description">
-				Results from: {% for platform in platforms %} {{platform}}{% if loop.index
-				==loop.length - 1 %}, &{% elif not loop.last %}, {%elif loop.last %}.{% endif %}{%
-				endfor %}
+				Results for "{{ artist }}" from: {% for platform in platforms %} {{platform}}{% if
+				loop.index ==loop.length - 1 %}, &{% elif not loop.last %}, {%elif loop.last %}.{%
+				endif %}{% endfor %}
 			</div>
 			<div class="list-container">
 				{% for artist, rank in related_artists.items() %}

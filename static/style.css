@@ -19,7 +19,7 @@ body {
 
 .header-text {
 	font-size: 40px;
-	margin: 10px;
+	margin: 20px;
 }
 
 .wrapper {
@@ -28,7 +28,7 @@ body {
 	align-items: center;
 	justify-content: center;
 	box-sizing: border-box;
-	padding: 20px;
+	padding: 40px;
 }
 
 .center-header {

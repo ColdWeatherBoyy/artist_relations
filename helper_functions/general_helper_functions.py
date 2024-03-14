@@ -7,14 +7,13 @@ def evaluate_platform(
     platform_function: Callable,
     platform_name: str,
     related_artists: Dict[str, list[str]],
-    artist_name_list: List[str],
+    artist_name_dict: defaultdict,
 ) -> None:
     data = platform_function(artist)
     if data is not None:
         artists, artist_name = data
         related_artists[platform_name] = artists
-        if artist_name not in artist_name_list:
-            artist_name_list.append(artist_name)
+        artist_name_dict[artist_name] += 1
 
 
 def compare_and_sort_artists(

@@ -1,5 +1,6 @@
 import base64
-from typing import List, Optional
+import json
+from typing import List, Optional, Tuple
 import requests
 from constants import TIDAL_CLIENT_ID, TIDAL_CLIENT_SECRET
 
@@ -22,7 +23,7 @@ def get_token() -> Optional[str]:
         return response.json()["access_token"]
 
 
-def get_artist_id_tidal(artist: str, token: str) -> Optional[str]:
+def get_artist_id_tidal(artist: str, token: str) -> Optional[Tuple[str, str]]:
     url = f"https://openapi.tidal.com/search?query={artist}&type=ARTISTS&limit=10&countryCode=US"
     headers = {
         "Authorization": f"Bearer {token}",
@@ -32,10 +33,14 @@ def get_artist_id_tidal(artist: str, token: str) -> Optional[str]:
     if response.status_code != 207:
         print("Error retrieving artist id from Tidal")
     else:
-        return response.json()["artists"][0]["id"]
+        return (
+            response.json()["artists"][0]["id"],
+            response.json()["artists"][0]["resource"]["name"],
+        )
 
 
 def get_related_artists_ids_tidal(artist_id: str, token: str) -> Optional[List[str]]:
+
     url = (
         f"https://openapi.tidal.com/artists/{artist_id}/similar?countryCode=US&limit=20"
     )
@@ -73,18 +78,22 @@ def get_artist_names_tidal(artist_ids: List[str], token: str) -> Optional[List[s
         )
 
 
-def get_artists_tidal(artist: str) -> Optional[List[str]]:
+def get_artists_tidal(artist: str) -> Optional[Tuple[List[str], str]]:
     token = get_token()
     if token is None:
         print("No token Tidal")
         return
-    artist_id = get_artist_id_tidal(artist, token)
-    if artist_id is None:
+    data = get_artist_id_tidal(artist, token)
+    if data is None:
         print("No artist id Tidal")
         return
+    artist_id, artist_name = data
     related_artists_ids = get_related_artists_ids_tidal(artist_id, token)
     if related_artists_ids is None:
         print("No related artists ids from Tidal")
         return
     related_artists_names = get_artist_names_tidal(related_artists_ids, token)
-    return related_artists_names
+    if related_artists_names is None:
+        print("No related artists names from Tidal")
+        return
+    return related_artists_names, artist_name

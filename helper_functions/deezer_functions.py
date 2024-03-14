@@ -1,8 +1,8 @@
-from typing import List, Optional
+from typing import List, Optional, Tuple
 import requests
 
 
-def get_artists_deezer(artist: str) -> Optional[List[str]]:
+def get_artists_deezer(artist: str) -> Optional[Tuple[List[str], str]]:
     artist_json = requests.get(
         f"https://api.deezer.com/search/artist?q={artist}&limit=20"
     )
@@ -10,6 +10,7 @@ def get_artists_deezer(artist: str) -> Optional[List[str]]:
         print("Error retrieving artist from Deezer")
     else:
         artist_id = artist_json.json()["data"][0]["id"]
+        artist_name = artist_json.json()["data"][0]["name"]
         related_artists_json = requests.get(
             f"https://api.deezer.com/artist/{artist_id}/related"
         )
@@ -19,6 +20,12 @@ def get_artists_deezer(artist: str) -> Optional[List[str]]:
         ):
             print("Error retrieving related artists from Deezer")
         else:
-            return list(
-                map(lambda artist: artist["name"], related_artists_json.json()["data"])
+            return (
+                list(
+                    map(
+                        lambda artist: artist["name"],
+                        related_artists_json.json()["data"],
+                    )
+                ),
+                artist_name,
             )
